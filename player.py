@@ -1,6 +1,11 @@
 import random
 
 
+game_map = open('map.csv')
+text = game_map.read()
+print(text.split(', '))
+
+
 def roll(count=0, doubles=0):
     if doubles == 3:
         return False
@@ -21,27 +26,25 @@ def roll(count=0, doubles=0):
 class Player:
     def __init__(self, board):
         self.board = board
-        self.player_id = len(self.board.players)
-        #* Getting Bankrupted
+        self.player_number = len(self.board.players)
+        # Getting Bankrupted
         self.bankrupt = False
-        #* Getting jailed
+        # Getting jailed
         self.jail = False
-        #* Money for each player
+        # Money for each player
         self.money = 1500
         self.jail_chance_card = False
         self.status = 1
         self.board.add_player(self)
-    
+
     def more_money(self, more):
         self.money += more
-    
+
     def less_money(self, less):
         self.money -= less
         if self.money < 0:
             self.bankrupt = True
-    
+
     def bankrupt_and_losing(self):
         self.money = 0
         self.status = 0
-        
-    

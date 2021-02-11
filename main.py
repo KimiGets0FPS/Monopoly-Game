@@ -1,4 +1,11 @@
-import pygame
+# import pygame
+from player import Player
+
+player = Player
 
 
-pygame.init()
+class Main:
+    ...
+
+
+# pygame.init()
