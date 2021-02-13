@@ -4,8 +4,9 @@ from player import Player
 player = Player
 
 
-class Main:
-    ...
+def main():
+    while True:
+        ...
 
 
 # pygame.init()
