@@ -1,50 +1,16 @@
-import random
-
-
-game_map = open('map.csv')
-text = game_map.read()
-print(text.split(', '))
-
-
-def roll(count=0, doubles=0):
-    if doubles == 3:
-        return False
-    roll_count = 0
-    double_roll = False
-    for _ in range(2):
-        choice = random.choice([1, 2, 3, 4, 5, 6])
-        if roll_count == choice:
-            double_roll = True
-        roll_count += choice
-    if double_roll:
-        again = roll(count + roll_count, doubles + 1)
-        return again
-    else:
-        return count + roll_count
+import random as r
 
 
 class Player:
-    def __init__(self, board):
-        self.board = board
-        self.player_number = len(self.board.players)
-        # Getting Bankrupted
+    def __init(self):
+        self.starting_money = 1500
         self.bankrupt = False
-        # Getting jailed
-        self.jail = False
-        # Money for each player
-        self.money = 1500
-        self.jail_chance_card = False
-        self.status = 1
-        self.board.add_player(self)
+        self.triple_double = False
 
-    def more_money(self, more):
-        self.money += more
+    def dice_roll(self):
+        roll1 = r.randint(0, 6)
+        roll2 = r.randint(0, 6)
+        if roll1 == roll2:
+            return "Double!"
 
-    def less_money(self, less):
-        self.money -= less
-        if self.money < 0:
-            self.bankrupt = True
 
-    def bankrupt_and_losing(self):
-        self.money = 0
-        self.status = 0

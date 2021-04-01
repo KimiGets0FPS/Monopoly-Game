@@ -1,12 +1,11 @@
-# import pygame
 from player import Player
 
-player = Player
+player = Player()
 
 
-def main(wave=50):
-    while wave > 0:
-        wave -= 1
+def main():
+    ...
 
 
-# pygame.init()
+if __name__ == '__main__':
+    main()
